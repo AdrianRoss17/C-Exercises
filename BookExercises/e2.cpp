@@ -36,11 +36,6 @@ int main() {
 				if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1) {
 					cout << "*";
 				}
-				else {
-					string spaceLength(10, " ");
-					cout << (10," ");
-					c += 10;
-				}
 				c++;
 			}
 		}
