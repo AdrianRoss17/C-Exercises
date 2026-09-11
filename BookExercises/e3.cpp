@@ -61,60 +61,54 @@ using std::vector;
 //	return 0;
 //}
 
-int main() {
-	cout << "Please enter students names: ";
-
-	string students;
-	vector<string> studentsVector;
-
-	while (cin >> students)
-	{
-		studentsVector.push_back(students);
-	}
-
-	cout << "Please enter homework grades for " << students.size() << " students (3 per): ";
-
-	double hw;
-	vector<double> homeWorkVector;
-	vector<double> homeWorkStudentsVectorAverage;
-
-	while (cin >> hw)
-	{
-		homeWorkVector.push_back(hw);
-	}
-
-	double studentsHomeworkSections = homeWorkVector.size() / 3;
-
-	for (int i = 0; i < studentsHomeworkSections; i++)
-	{
-		for (int j = studentsHomeworkSections; j < ; j++)
-		{
-			double avg = j
-				homeWorkStudentsVectorAverage.push_back
-		}
-	}
-
-	cout << "Please enter their final grade: ";
-
-	double final;
-	vector<double> finalVector;
-
-	while (cin >> final)
-	{
-		double finalGrade = (0.2 * final) + (hw1 + hw2 + hw3) / 3;
-
-		homeWorkVector.push_back(finalGrade);
-	}
-
-	for (int i = 0; i < students.size(); ++i)
-	{
-		cout << studentsVector[i];
-	}
-
-	cout << endl;
-
-	for (int i = 0; i < homeWorkVector.size(); ++i)
-	{
-		cout << homeWorkVector[i];
-	}
-}
+//int main() {
+//	cout << "Please enter students names: ";
+//
+//	string students;
+//	vector<string> studentsVector;
+//
+//	while (cin >> students)
+//	{
+//		studentsVector.push_back(students);
+//	}
+//
+//	cout << "Please enter homework grades for " << studentsVector.size() << " students (3 per): ";
+//
+//	double hw;
+//	vector<double> homeWorkVector;
+//
+//	while (cin >> hw)
+//	{
+//		homeWorkVector.push_back(hw);
+//	}
+//
+//	double studentsHomeworkSections = homeWorkVector.size() / 3;
+//	vector<double> homeWorkStudentsVectorAverage;
+//
+//	for (int i = 0; i < studentsHomeworkSections; i++)
+//	{
+//		double hwSum = 0;
+//		for (int j = i * 3; j < (i+1) * 3; j++)
+//		{
+//			hwSum += homeWorkVector[j];
+//		}
+//		homeWorkStudentsVectorAverage.push_back(hwSum / 3);
+//	}
+//
+//	cout << "Please enter their final grade (should be the same number as students): ";
+//
+//	double final;
+//	vector<double> finalVector;
+//
+//	while (cin >> final)
+//	{
+//		finalVector.push_back(final);
+//	}
+//
+//	cout << "The final grades are: ";
+//
+//	for (int i = 0; i < studentsVector.size(); i++)
+//	{
+//		cout << studentsVector[i] << " final:" << finalVector[i] << " hws:" << homeWorkStudentsVectorAverage[i] << endl;
+//	}
+//}
