@@ -4,4 +4,5 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="BookExercises/BookExercises.vcxproj" />
+  <Project Path="e4/e4.vcxproj" Id="20edbff9-f128-4be4-89bb-5a4ed9bdf012" />
 </Solution>
