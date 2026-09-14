@@ -141,12 +141,14 @@
   <ItemGroup>
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
+    <ClInclude Include="misc.h" />
     <ClInclude Include="student_info.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="median.cpp" />
+    <ClCompile Include="misc.cpp" />
     <ClCompile Include="student_info.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
