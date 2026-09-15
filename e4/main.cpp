@@ -18,6 +18,7 @@ using std::to_string;
 
 int main()
 {
+	//new exer
 	/*vector<Student_info> students;
 	Student_info record;
 	string::size_type maxlen = 0;
@@ -52,6 +53,7 @@ int main()
 		cout << endl;
 	}*/
 
+	//new exer
 	//vector<double> integersVector;
 	//double integer;
 	//string::size_type maxlen = 0;
@@ -72,16 +74,35 @@ int main()
 	//	cout << currentInt << std::setw(largestIntegerContainer - currentIntSize + currentIntSizeSquare) << currentInt * currentInt << endl;
 	//}
 
-	vector<string> wordsEntered;
-	string actualWords;
+	//new exer
+	//vector<string> wordsEntered;
+	//string actualWords;
 
-	while (cin >> actualWords)
+	//while (cin >> actualWords)
+	//{
+	//	wordsEntered.push_back(actualWords);
+	//}
+
+
+	//readAndCalcWords(wordsEntered);
+
+	//new exer
+	/*vector<double> v;
+	double x;
+
+	while (cin >> x)
 	{
-		wordsEntered.push_back(actualWords);
+		v.push_back(x);
 	}
 
+	double count = 0;
 
-	readAndCalcWords(wordsEntered);
+	for (int i = 0; i < v.size(); ++i)
+	{
+		count += v[i];
+	}
+
+	cout << count / v.size();*/
 
 	return 0;
 }
