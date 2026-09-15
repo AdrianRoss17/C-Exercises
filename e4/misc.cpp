@@ -4,37 +4,49 @@
 #include <iostream>
 #include "misc.h"
 
-using std::vector; using std::string; using std::cout; using std::to_string;
+using std::vector; using std::string; using std::cout; using std::to_string; using std::endl;
 
-vector<string> readAndCalcWords(vector<string>& words)
+void readAndCalcWords(vector<string>& words)
 {
-	cout << words.size();
+	cout << words.size() << endl;
 
 	vector<string> distinctWords;
+	vector<string> display;
 
-	int exists = 0;
-	int existsWordCount;
+	int exists = false;
+	int existsWordCount = 0;
 
-	if (distinctWords.size() == 0)
+	for (int i = 0; i < words.size(); ++i)
 	{
-		distinctWords.push_back(words[0]);
-	}
-	else {
-		for (int i = 0; i < words.size(); ++i)
+		for (int j = 0; j < words.size(); ++j)
 		{
-			for (int j = 0; j < words.size(); ++j)
+			if (words[i] == words[j])
 			{
-				if (words[i] == words[j])
-				{
-					++existsWordCount;
-				}
+				++existsWordCount;
 			}
-			distinctWords.push_back(words[i] + to_string(existsWordCount));
 		}
+		for (int j = 0; j < distinctWords.size(); ++j)
+		{
+			if (words[i] == distinctWords[j])
+			{
+				exists = true;
+			}
+		}
+
+		if (exists == false)
+		{
+			string con = words[i] + " " + to_string(existsWordCount);
+			distinctWords.push_back(words[i]);
+			display.push_back(con);
+		}
+		existsWordCount = 0;
+		exists = false;
 	}
+
 
 	for (int j = 0; j < distinctWords.size(); ++j)
 	{
-		cout << distinctWords[j];
+		cout << display[j] << endl;
 	}
+
 }

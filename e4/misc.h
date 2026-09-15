@@ -4,6 +4,6 @@
 #include <vector>
 #include <string>
 
-std::vector<std::string> readAndCalcWords(std::vector<std::string>& words);
+void readAndCalcWords(std::vector<std::string>& words);
 
 #endif
