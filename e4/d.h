@@ -13,6 +13,8 @@ struct Student_info
 };
 
 bool compare(const Student_info&, const Student_info&);
+bool fgrade(const Student_info& s);
 std::istream& read(std::istream&, Student_info&);
 std::istream& read_hw(std::istream&, std::vector<double>&);
+std::vector<Student_info> extract_fails(std::vector<Student_info>&);
 #endif // !GUARD_Student_info

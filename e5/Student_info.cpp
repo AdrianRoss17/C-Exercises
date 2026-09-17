@@ -1,4 +1,4 @@
-#include "student_info.h"
+#include "Student_info.h"
 
 using std::istream; using std::vector;
 
@@ -28,4 +28,21 @@ istream& read_hw(istream& in, vector<double>& hw)
 		in.clear();
 	}
 	return in;
+}
+
+vector<Student_info> extract_fails(vector<Student_info>& students)
+{
+	vector<Student_info> fail;
+	vector<Student_info>::size_type i = 0;
+
+	while (i != students.size()) {
+		if (fgrade(students[i])) {
+			fail.push_back(students[i]);
+			students.erase(students.begin() + i);
+		}
+		else {
+			++i;
+		}
+	}
+	return fail;
 }

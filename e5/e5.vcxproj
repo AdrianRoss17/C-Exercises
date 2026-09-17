@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{20edbff9-f128-4be4-89bb-5a4ed9bdf012}</ProjectGuid>
-    <RootNamespace>e4</RootNamespace>
+    <ProjectGuid>{cc714da9-caad-4c1a-b4d0-8d8264b0a6ed}</ProjectGuid>
+    <RootNamespace>e5</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,14 +139,17 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\e4\misc.cpp" />
+    <ClCompile Include="grade.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="median.cpp" />
+    <ClCompile Include="Student_info.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
     <ClInclude Include="misc.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="median.cpp" />
-    <ClCompile Include="misc.cpp" />
+    <ClInclude Include="Student_info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
