@@ -120,6 +120,18 @@ int main()
 	//for (vector<string>::size_type i = 0; i != stringVec.size() * 2 + 2; ++i) {
 	//	cout << vcat(stringVec, frame(stringVec))[i] << endl;
 	//}
+	
+	//NEW EXERCISE
+	string s;
+	vector<string> stringVec;
+
+	while (getline(cin, s)) {
+		stringVec = split(s);
+	}
+
+	for (vector<string>::size_type i = 0; i != stringVec.size() * 2 + 2; ++i) {
+		cout << hcat(stringVec, frame(stringVec))[i] << endl;
+	}
 
 	return 0;
 
