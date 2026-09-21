@@ -6,4 +6,5 @@
   <Project Path="BookExercises/BookExercises.vcxproj" />
   <Project Path="e4/e4.vcxproj" Id="20edbff9-f128-4be4-89bb-5a4ed9bdf012" />
   <Project Path="e5/e5.vcxproj" Id="cc714da9-caad-4c1a-b4d0-8d8264b0a6ed" />
+  <Project Path="e6/e6.vcxproj" Id="2ca002b6-e5c5-4d5f-ba26-3eb22adfeefd" />
 </Solution>
