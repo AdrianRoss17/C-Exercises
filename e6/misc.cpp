@@ -4,7 +4,7 @@
 #include <iostream>
 #include "misc.h"
 
-using std::vector; using std::string; using std::cout; using std::to_string; using std::endl;
+using std::vector; using std::string; using std::cout; using std::to_string; using std::endl; using std::copy;
 
 void readAndCalcWords(vector<string>& words)
 {
@@ -51,26 +51,33 @@ void readAndCalcWords(vector<string>& words)
 
 }
 
+bool space(char c)
+{
+	return isspace(c);
+}
+
+bool not_space(char c)
+{
+	return !isspace(c);
+}
+
 vector<string> split(const string& s)
 {
 	vector<string> ret;
-	typedef string::size_type string_size;
-	string_size i = 0;
+	typedef string::const_iterator iter;
+	
+	iter i = s.begin();
 
-	while (i != s.size()) {
+	while (i != s.end()) {
 
-		while (i != s.size() && isspace(s[i]))
-			++i;
+		i = find_if(i, s.end(), not_space);
 
-		string_size j = i;
+		iter j = find_if(i, s.end(), space);
 
-		while (j != s.size() && !isspace(s[j]))
-			++j;
+		if (i != s.end())
+			ret.push_back(string(i, j));
 
-		if (i != j) {
-			ret.push_back(s.substr(i, j - i));
-			i = j;
-		}
+		i = j;
 	}
 	return ret;
 }
@@ -104,10 +111,36 @@ vector<string> vcat(const vector<string>& top, const vector<string>& bottom)
 {
 	vector<string> ret = top;
 
-	ret.insert(ret.end(), bottom.begin(), bottom.end());
+	//ret.insert(ret.end(), bottom.begin(), bottom.end());
+	copy(bottom.begin(), bottom.end(), back_inserter(ret));
 
 	return ret;
 }
+
+//vector<string> hcat(const vector<string>& left, const vector<string>& right)
+//{
+//	vector<string> ret;
+//
+//	string::size_type width1 = width(left) + 1;
+//
+//	vector<string>::size_type i = 0, j = 0;
+//
+//	while (i != left.size() || j != right.size()) {
+//		string s;
+//
+//		if (i != left.size())
+//			s = left[i++];
+//
+//		s += string(width1 - s.size(), ' ');
+//
+//		if (j != right.size())
+//			s += right[j++];
+//
+//		ret.push_back(s);
+//	}
+//
+//	return ret;
+//}
 
 vector<string> hcat(const vector<string>& left, const vector<string>& right)
 {
@@ -115,21 +148,80 @@ vector<string> hcat(const vector<string>& left, const vector<string>& right)
 
 	string::size_type width1 = width(left) + 1;
 
-	vector<string>::size_type i = 0, j = 0;
+	vector<string>::const_iterator i = left.begin(), j = right.begin();
 
-	while (i != left.size() || j != right.size()) {
+	while (i != left.end() || j != right.end()) {
 		string s;
 
-		if (i != left.size())
-			s = left[i++];
+		if (i != left.end())
+			s = *i++;
 
 		s += string(width1 - s.size(), ' ');
 
-		if (j != right.size())
-			s += right[j++];
+		if (j != right.end())
+			s += *j++;
 
 		ret.push_back(s);
 	}
 
+	return ret;
+}
+
+bool not_url_char(char c)
+{
+	static const string url_ch = "`;/?:@=&$-_.+!*'((),";
+
+	return !(isalnum(c) || find(url_ch.begin(), url_ch.end(), c) != url_ch.end());
+}
+
+string::const_iterator url_beg(string::const_iterator b, string::const_iterator e)
+{
+	static const string sep = "://";
+
+	typedef string::const_iterator iter;
+
+	iter i = b;
+
+	while ((i = search(i, e, sep.begin(), sep.end())) != e) {
+
+		if (i != b && i + sep.size() != e) {
+
+			iter beg = i;
+			while (beg != b && isalpha(beg[-1]))
+				--beg;
+
+			if (beg != i && !not_url_char(i[sep.size()]))
+				return beg;
+		}
+
+		i += sep.size();
+	}
+
+	return e;
+}
+
+string::const_iterator url_end(string::const_iterator b, string::const_iterator e)
+{
+	return find_if(b, e, not_url_char);
+}
+
+vector<string> find_urls(const string& s)
+{
+	vector<string> ret;
+	typedef string::const_iterator iter;
+	iter b = s.begin(), e = s.end();
+
+	while (b != e) {
+		
+		b = url_beg(b, e);
+
+		if (b != e) {
+			iter after = url_end(b, e);
+
+			ret.push_back(string(b, after));
+
+			b = after;
+		}
+	}
 	return ret;
 }
