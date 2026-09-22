@@ -98,9 +98,9 @@ vector<string> frame(const vector<string>& v)
 
 	ret.push_back(border);
 
-	for (vector<string>::size_type i = 0; i != v.size(); ++i) {
-		ret.push_back("* " + v[i] +
-			string(maxlen - v[i].size(), ' ') + " *");
+	for (vector<string>::const_iterator i = v.begin(); i != v.end(); ++i) {
+		ret.push_back("* " + *i +
+			string(maxlen - i->size(), ' ') + " *");
 	}
 
 	ret.push_back(border);

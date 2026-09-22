@@ -120,7 +120,7 @@ int main()
 	//}
 
 	//NEW EXERCISE
-	string s;
+	/*string s;
 	vector<string> stringVec;
 
 	while (getline(cin, s)) {
@@ -131,6 +131,26 @@ int main()
 		cout << hcat(stringVec, frame(stringVec))[i] << endl;
 	}
 
-	return 0;
+	return 0;*/
+
+	//NEW EXERCISE
+	/*string s;
+
+	cin >> s;
+
+	vector<string> urlvec = find_urls(s);
+
+	for (vector<string>::const_iterator i = urlvec.begin(); i != urlvec.end(); i++) {
+		cout << *i << endl;
+	}*/
+
+	//NEW EXERCISE
+	//vector<int> u(10, 100);
+	//vector<int> v;
+	//copy(u.begin(), u.end(), v.begin());
+
+	//for (vector<int>::const_iterator i = v.begin(); i != v.end(); i++) {
+	//	cout << *i << endl;
+	//}
 
 }
