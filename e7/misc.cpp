@@ -98,9 +98,9 @@ vector<string> find_urls(const string& s)
 	return ret;
 }
 
-map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&) = split)
+map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&))
 {
-	string line;
+	string line; 
 	int line_number = 0;
 	map<string, vector<int> > ret;
 
@@ -114,5 +114,66 @@ map<string, vector<int> > xref(istream& in, vector<string> find_words(const stri
 	}
 
 	return ret;
-	23w
+}
+
+Grammar read_grammar(istream& in)
+{
+	Grammar ret;
+	string line;
+
+	while (getline(in, line)) {
+
+		vector<string> entry = split(line);
+
+		if (!entry.empty())
+			ret[entry[0]].push_back(Rule(entry.begin() + 1, entry.end()));
+	}
+
+	return ret;
+}
+
+vector<string> gen_sentence(const Grammar& g)
+{
+	vector<string> ret;
+	gen_aux(g, "<sentence>", ret);
+	return ret;
+}
+
+bool bracketed(const string& s)
+{
+	return s.size() > 1 && s[0] == '<' && s[s.size() - 1] == '>';
+}
+
+void gen_aux(const Grammar& g, const string& word, vector<string>& ret)
+{
+	if (!bracketed(word)) {
+		ret.push_back(word);
+	}
+	else {
+		Grammar::const_iterator it = g.find(word);
+		if (it == g.end())
+			throw std::logic_error("empty rule");
+
+		const Rule_collection& c = it->second;
+
+		const Rule& r = c[nrand(c.size())];
+
+		for (Rule::const_iterator i = r.begin(); i != r.end(); ++i)
+			gen_aux(g, *i, ret);
+	}
+}
+
+int nrand(int n)
+{
+	if (n <= 0 || n > RAND_MAX)
+		throw std::domain_error("Argument to nrand is out of range");
+
+	const int bucket_size = RAND_MAX / n;
+
+	int r;
+
+	do r = rand() / bucket_size;
+	while (r >= n);
+
+	return r;
 }
